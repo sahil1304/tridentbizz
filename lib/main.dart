@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
 
 import 'package:flutter/material.dart';
+import 'package:myflutterapp/package/datacontainer.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 import 'mobile.dart' if (dart.library.html) 'web.dart';
@@ -11,6 +12,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -52,15 +55,50 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final productNameTEController = TextEditingController();
+  final productQtyTEController = TextEditingController();
+  final priceController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
-          child: Text('Create PDF'),
-          onPressed: _createPDF,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: [
+                TextField(
+                  onTap: null,
+                  cursorColor: Colors.black,
+                  controller: productNameTEController,
+                ),
+                TextField(
+                  onTap: null,
+                  //style: Text_styleTFOnWhite(),
+                  cursorColor: Colors.black,
+                  controller: productQtyTEController,
+                ),
+                TextField(
+                  onTap: null,
+                  //style: Text_styleTFOnWhite(),
+                  cursorColor: Colors.black,
+                  controller: priceController,
+                ),
+                ElevatedButton(
+                  child: Text('Add Product'),
+                  onPressed: _add,),
+
+                ElevatedButton(
+                  child: Text('Create PDF'),
+                  onPressed: _createPDF,),
+              ],
+            ),
+          ],
         ),
-      ),
+
+        ),
+
     );
   }
 
@@ -68,12 +106,12 @@ class _MyHomePageState extends State<MyHomePage> {
     PdfDocument document = PdfDocument();
     final page = document.pages.add();
 
-    page.graphics.drawString('Welcome to PDF Succinctly!',
+    page.graphics.drawString('Welcome to Tridentbizz',
         PdfStandardFont(PdfFontFamily.helvetica, 30));
 
     page.graphics.drawImage(
         PdfBitmap(await _readImageData('Pdf_Succinctly.jpg')),
-        Rect.fromLTWH(0, 100, 440, 550));
+        Rect.fromLTWH(0, 50, 50, 50));
 
     PdfGrid grid = PdfGrid();
     grid.style = PdfGridStyle(
@@ -84,24 +122,26 @@ class _MyHomePageState extends State<MyHomePage> {
     grid.headers.add(1);
 
     PdfGridRow header = grid.headers[0];
-    header.cells[0].value = 'Roll No';
-    header.cells[1].value = 'Name';
-    header.cells[2].value = 'Class';
+    header.cells[0].value = 'Product Name';
+    header.cells[1].value = 'Quantity';
+    header.cells[2].value = 'Price';
 
     PdfGridRow row = grid.rows.add();
+
+    //for(int i=0;i<)
     row.cells[0].value = '1';
     row.cells[1].value = 'Arya';
     row.cells[2].value = '6';
 
-    row = grid.rows.add();
-    row.cells[0].value = '2';
-    row.cells[1].value = 'John';
-    row.cells[2].value = '9';
+    for(int i=0;i<productName.length;i++)
+      {
+        row = grid.rows.add();
+        row.cells[0].value = productName[i];
+        row.cells[1].value = productQty[i];
+        row.cells[2].value = productPrice[i];
+      }
 
-    row = grid.rows.add();
-    row.cells[0].value = '3';
-    row.cells[1].value = 'Tony';
-    row.cells[2].value = '8';
+
 
     grid.draw(
         page: document.pages.add(), bounds: const Rect.fromLTWH(0, 0, 0, 0));
@@ -110,6 +150,16 @@ class _MyHomePageState extends State<MyHomePage> {
     document.dispose();
 
     saveAndLaunchFile(bytes, 'Output.pdf');
+  }
+  Future<void> _add() async {
+
+    productName.add(productNameTEController.text);
+    productQty.add(productQtyTEController.text);
+    productPrice.add(priceController.text);
+
+    productNameTEController.text="";
+    productQtyTEController.text="";
+    priceController.text="";
   }
 }
 
