@@ -1,0 +1,4 @@
+#Sun Aug 29 12:46:24 IST 2021
+base.0=D\:\\Green it co projects\\create-a-pdf-document-in-flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
