@@ -22,11 +22,11 @@ environment:
 
 dependencies:
   path_provider: ^2.0.1
-  open_file: ^3.1.0
   flutter:
     sdk: flutter
   syncfusion_flutter_pdf: ^18.4.47-beta
   universal_html: ^1.2.4
+  open_file: ^3.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,6 +49,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/Pdf_Succinctly.jpg
+    - images/Logokkjpg.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
