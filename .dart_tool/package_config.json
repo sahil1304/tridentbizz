@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "animated_splash_screen",
+      "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/animated_splash_screen-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.1",
       "packageUri": "lib/",
@@ -112,6 +118,12 @@
     {
       "name": "open_file",
       "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/open_file-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "page_transition",
+      "rootUri": "file:///C:/src/flutter/flutter/.pub-cache/hosted/pub.dartlang.org/page_transition-2.0.1-nullsafety.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -284,7 +296,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-08-29T06:00:09.315038Z",
+  "generated": "2021-08-30T16:16:32.806565Z",
   "generator": "pub",
   "generatorVersion": "2.13.4"
 }
